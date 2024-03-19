@@ -12,12 +12,12 @@ public class CartItems {
     private int cartItemID;
 
 
-    @Column(name = "cartID")
+    @Column(name = "CartID")
     private int cartID;
 
-    @Column(name = "productID")
+    @Column(name = "ProductID")
     private int productID;
-    @Column(name = "quantity")
+    @Column(name = "Quantity")
     private int quantity;
 
 }

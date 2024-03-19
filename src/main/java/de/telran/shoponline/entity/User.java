@@ -11,15 +11,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
+    @Column(name = "Name")
     private String name;
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
-    @Column(name = "phone_number")
+    @Column(name = "Phone_number")
     private String phoneNumber;
-    @Column(name = "password_hash")
+    @Column(name = "Password_hash")
     private String passwordHash;
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
+    @Column(name = "Role")
     private Role role;
 }
