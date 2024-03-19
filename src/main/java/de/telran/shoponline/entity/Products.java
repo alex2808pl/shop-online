@@ -31,8 +31,8 @@ public class Products {
     @Column(name = "Price")
     private double price;
 
-    @Column(name = "CategoryID")
-    private int categoryID;
+//    @Column(name = "CategoryID")
+//    private int categoryID;
 
     @Column(name = "ImageURL")
     private String imageURL;
@@ -45,4 +45,8 @@ public class Products {
 
     @Column(name = "UpdatedAt")
     private Timestamp updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CategoryID")
+    private Categories category;
 }

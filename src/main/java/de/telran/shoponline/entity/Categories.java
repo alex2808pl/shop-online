@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Categories")
 @AllArgsConstructor
@@ -20,4 +23,8 @@ public class Categories {
 
     @Column(name = "Name")
     private String name;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private Set<Products> products = new HashSet<>();
+
 }

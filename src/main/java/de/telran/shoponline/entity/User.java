@@ -9,7 +9,8 @@ import lombok.Data;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "UserID")
+    private int userID;
 
     @Column(name = "Name")
     private String name;
@@ -22,4 +23,8 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "Role")
     private Role role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CartID", referencedColumnName = "UserID")
+    private Cart cart;
 }
