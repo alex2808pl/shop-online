@@ -3,6 +3,8 @@ package de.telran.shoponline.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class Cart {
@@ -10,8 +12,9 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CartID")
     private int cartID;
-    @Column(name = "UserID")
-    private int userID;
+
+    @OneToMany(mappedBy = "cart")
+    private List<CartItems> cartItems;
 
     @OneToOne(mappedBy = "cart")
     private User user;
