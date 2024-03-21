@@ -3,17 +3,21 @@ package de.telran.shoponline.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 public class CartItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CartItemID")
     private int cartItemID;
 
 
-    @Column(name = "CartID")
-    private int cartID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CartID")
+    private Cart cart;
 
     @Column(name = "ProductID")
     private int productID;
