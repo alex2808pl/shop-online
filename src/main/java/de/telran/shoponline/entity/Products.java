@@ -49,4 +49,7 @@ public class Products {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CategoryID")
     private Categories category;
+
+    @OneToOne(mappedBy = "product")
+    private OrderItems orderItem;
 }

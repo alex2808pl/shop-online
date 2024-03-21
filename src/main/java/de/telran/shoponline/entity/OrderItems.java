@@ -22,7 +22,11 @@ public class OrderItems {
     @Column(name = "PriceAtPurchase")
     private double priceAtPurchase;
 
-    private int orderID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "OrderID")
+    private Orders order;
 
-    private int productID;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ProductID", referencedColumnName = "ProductID")
+    private Products product;
 }
