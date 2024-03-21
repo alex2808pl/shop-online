@@ -4,9 +4,14 @@ import de.telran.shoponline.entity.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Data
 @Entity
-public class User {
+@Table(name = "Users")
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserID")
@@ -14,17 +19,27 @@ public class User {
 
     @Column(name = "Name")
     private String name;
+
     @Column(name = "Email")
     private String email;
-    @Column(name = "Phone_number")
+
+    @Column(name = "PhoneNumber")
     private String phoneNumber;
-    @Column(name = "Password_hash")
+
+    @Column(name = "PasswordHash")
     private String passwordHash;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "Role")
     private Role role;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CartID", referencedColumnName = "UserID")
-    private Cart cart;
+//
+////    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(mappedBy = "user")
+////    @JoinColumn(name = "CartID", referencedColumnName = "userID")
+//    private Cart cart;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Orders> orders = new HashSet<>();
+
 }

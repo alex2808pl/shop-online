@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 @Entity
+
 public class Orders {
 
     @Id
@@ -17,8 +18,8 @@ public class Orders {
     @Column(name = "OrderID")
     private int orderId;
 
-    @Column(name = "UserID")
-    private int userId;
+//    @Column(name = "UserID")
+//    private int userId;
 
     @Column(name = "CreatedAt")
     private Timestamp createdAt;
@@ -41,4 +42,8 @@ public class Orders {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItems> orderItems = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UserID")
+    private Users user;
 }
