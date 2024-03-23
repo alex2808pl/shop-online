@@ -8,4 +8,5 @@
 
 <!--    <include file="db/changelog_xml/changeset/changelog.h2.xml"/>-->
 <!--    <include file="db/changelog_xml/changeset/create-person.xml"/>-->
+        <include file="db/changelog/insert_test_data/addDataToOrders.sql"/>
 </databaseChangeLog>
