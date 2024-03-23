@@ -15,8 +15,18 @@ public class Favorites {
     @Column(name = "FavoriteID")
     private int favoriteID;
 
-    private int userID;
+//    @Column(name = "UserID")
+//    private int userID;
+//
+//    @Column(name = "ProductID")
+//    private int productID;
 
-    private int productID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UserID")
+    private Users user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ProductID")
+    private Products product;
 
 }

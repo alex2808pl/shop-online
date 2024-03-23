@@ -33,13 +33,13 @@ public class Users {
     @Column(name = "Role")
     private Role role;
 
-//
-////    @OneToOne(cascade = CascadeType.ALL)
-//    @OneToOne(mappedBy = "user")
-////    @JoinColumn(name = "CartID", referencedColumnName = "userID")
-//    private Cart cart;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Orders> orders = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Favorites> favorites = new HashSet<>();
+
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 
 }

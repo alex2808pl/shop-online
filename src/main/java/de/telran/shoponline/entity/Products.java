@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Products")
@@ -52,4 +54,14 @@ public class Products {
 
     @OneToOne(mappedBy = "product")
     private OrderItems orderItem;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<Favorites> favorites = new HashSet<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<OrderItems> orderItems = new HashSet<>();
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<CartItems> cartItems = new HashSet<>();
+
 }

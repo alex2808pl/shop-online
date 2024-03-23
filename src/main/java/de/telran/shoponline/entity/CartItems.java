@@ -20,9 +20,14 @@ public class CartItems {
     @JoinColumn(name = "CartID")
     private Cart cart;
 
-    @Column(name = "ProductID")
-    private int productID;
+//    @Column(name = "ProductID")
+//    private int productID;
+
     @Column(name = "Quantity")
     private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ProductID")
+    private Products product;
 
 }
