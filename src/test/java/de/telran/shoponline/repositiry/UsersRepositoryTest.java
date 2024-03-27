@@ -2,13 +2,10 @@ package de.telran.shoponline.repositiry;
 
 import de.telran.shoponline.entity.Users;
 import de.telran.shoponline.entity.enums.Role;
-import org.h2.engine.User;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
@@ -18,46 +15,43 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @ActiveProfiles(profiles = { "dev" })
 class UsersRepositoryTest {
+    public static final long TEST_ID = 1L;
+    public static final String TEST_NEW_NAME = "NewTestName";
+    private static Users testNewUser;
+
     @Autowired
     private UsersRepository usersRepositoryTest;
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
+    @BeforeAll
+    static void setUp() {
+        testNewUser = new Users();
+        testNewUser.setName("TestName");
+        testNewUser.setEmail("Test E-Mail");
+        testNewUser.setRole(Role.CLIENT);
+        testNewUser.setPasswordHash("Test Password Hash");
+        testNewUser.setPhoneNumber("Test Phone Nummer");
     }
 
     @Test
     void testGet() {
-        Optional<Users> user = usersRepositoryTest.findById(1L);
+        Optional<Users> user = usersRepositoryTest.findById(TEST_ID);
         assertTrue(user.isPresent());
-        assertEquals(1L, user.get().getUserID());
+        assertEquals(TEST_ID, user.get().getUserID());
     }
     @Test
     void testInsert() {
-        Users testUsers = new Users();
-        testUsers.setName("TestName");
-        testUsers.setEmail("Test E-Mail");
-        testUsers.setRole(Role.CLIENT);
-        testUsers.setPasswordHash("Test Password Hash");
-        testUsers.setPhoneNumber("Test Phone Nummer");
 
-        Users returnUser = usersRepositoryTest.save(testUsers);
+        Users returnUser = usersRepositoryTest.save(testNewUser);
         assertNotNull(returnUser);
         assertTrue(returnUser.getUserID()>0);
 
         Optional<Users> findUser = usersRepositoryTest.findById(returnUser.getUserID());
         assertTrue(findUser.isPresent());
-        assertEquals(testUsers.getName(), findUser.get().getName());
+        assertEquals(testNewUser.getName(), findUser.get().getName());
     }
 
     @Test
     void testEdit() {
-        final long TEST_ID = 1;
-        final String TEST_NEW_NAME = "NewTestName";
-
         Optional<Users> user = usersRepositoryTest.findById(TEST_ID);
         assertTrue(user.isPresent());
 
@@ -77,20 +71,14 @@ class UsersRepositoryTest {
 
     @Test
     void testDelete() {
-        Users testUsers = new Users();
-        testUsers.setName("TestName");
-        testUsers.setEmail("Test E-Mail");
-        testUsers.setRole(Role.CLIENT);
-        testUsers.setPasswordHash("Test Password Hash");
-        testUsers.setPhoneNumber("Test Phone Nummer");
 
-        Users returnUser = usersRepositoryTest.save(testUsers);
+        Users returnUser = usersRepositoryTest.save(testNewUser);
         assertNotNull(returnUser);
         assertTrue(returnUser.getUserID()>0);
 
         Optional<Users> findUser = usersRepositoryTest.findById(returnUser.getUserID());
         assertTrue(findUser.isPresent());
-        assertEquals(testUsers.getName(), findUser.get().getName());
+        assertEquals(testNewUser.getName(), findUser.get().getName());
 
         usersRepositoryTest.delete(findUser.get());
 
