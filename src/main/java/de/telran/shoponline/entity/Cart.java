@@ -11,7 +11,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CartID")
-    private int cartID;
+    private long cartID;
 
     @OneToMany(mappedBy = "cart")
     private List<CartItems> cartItems;

@@ -3,6 +3,7 @@ liquibase.bat generateChangeLog --driver=org.h2.Driver --url=jdbc:h2:file:D:/jav
 
 liquibase.bat generateChangeLog --driver=com.mysql.cj.jdbc.Driver --url=jdbc:mysql://localhost:3306/db?user=test&password=test&allowPublicKeyRetrieval=true&useSSL=false --changeLogFile=changelog.h2.yaml
 liquibase.bat generateChangeLog --driver=com.mysql.cj.jdbc.Driver --url=jdbc:mysql://localhost:3306/db?allowPublicKeyRetrieval=true --username=test --password=test --changeLogFile=changelog.h2.sql
+liquibase.bat generateChangeLog --driver=com.mysql.cj.jdbc.Driver --url=jdbc:mysql://localhost:3306/db?allowPublicKeyRetrieval=true --username=test --password=test --changeLogFile=changelog.mysql.sql
 
 
 2. Установка tag
