@@ -7,9 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
-    Orders getOrdersByOrderId (int id);
-    List<Orders> findAll ();
-    Orders updateOrdersByOrderId (Orders orders);
-    void deleteByOrderId (int id);
-    Orders saveAndFlush (Orders orders);
+
 }
