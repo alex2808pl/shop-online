@@ -4,18 +4,22 @@ import de.telran.shoponline.config.MapperUtil;
 import de.telran.shoponline.dto.UsersDto;
 import de.telran.shoponline.entity.Users;
 import de.telran.shoponline.mapper.Mappers;
+import de.telran.shoponline.repositiry.CartRepository;
 import de.telran.shoponline.repositiry.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UsersService {
     private final UsersRepository usersRepository;
+    private final CartRepository cartRepository;
     private final  Mappers mappers;
     private final  ModelMapper modelMapper;
 
@@ -37,4 +41,25 @@ public class UsersService {
         UsersDto userDto = mappers.convertToUsersDto(user);
         return userDto;
     }
+
+    public UsersDto updateUser(UsersDto usersDto) {
+
+        if(usersDto.getUserID()!=null) {
+            Optional<Users> usersOptional = usersRepository.findById(usersDto.getUserID());
+            if(usersOptional.isPresent()) {
+                Users users = usersOptional.get();
+                users.setUserID((usersDto.getUserID()!=null) ? usersDto.getUserID() : users.getUserID());
+                users.setName((usersDto.getName()!=null) ? usersDto.getName() : users.getName());
+                users.setEmail((usersDto.getEmail()!=null) ? usersDto.getEmail() : users.getEmail());
+                users.setPhoneNumber((usersDto.getPhoneNumber()!=null) ? usersDto.getPhoneNumber() : users.getPhoneNumber());
+                users.setRole((usersDto.getRole()!=null) ? usersDto.getRole() : users.getRole());
+                // пароль пока не пробуем
+                // Связанный объект нужно найти в репозитории по коду и тоже передать его в переменную?
+                Users userUpdated = usersRepository.save(users);
+                return mappers.convertToUsersDto(userUpdated);
+            }
+        }
+        return null;
+    }
+
 }
