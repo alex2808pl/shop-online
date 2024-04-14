@@ -16,7 +16,7 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID")
-    private int orderId;
+    private long orderId;
 
 //    @Column(name = "UserID")
 //    private int userId;
@@ -37,8 +37,8 @@ public class Orders {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @Column(name = "UpdateAt")
-    private Timestamp updateAt;
+    @Column(name = "UpdatedAt")
+    private Timestamp updatedAt;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private Set<OrderItems> orderItems = new HashSet<>();
