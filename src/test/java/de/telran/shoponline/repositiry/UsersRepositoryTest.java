@@ -3,10 +3,12 @@ package de.telran.shoponline.repositiry;
 import de.telran.shoponline.entity.Users;
 import de.telran.shoponline.entity.enums.Role;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
 
@@ -20,7 +22,7 @@ class UsersRepositoryTest {
     private static Users testNewUser;
 
     @Autowired
-    private UsersRepository usersRepositoryTest;
+    private UsgitersRepository usersRepositoryTest;
 
     @BeforeAll
     static void setUp() {
@@ -40,6 +42,9 @@ class UsersRepositoryTest {
     }
     @Test
     void testInsert() {
+
+        // Найти тестовый элемент корзины cartTest
+        // testNewUser.setCart(cartTest);
 
         Users returnUser = usersRepositoryTest.save(testNewUser);
         assertNotNull(returnUser);
