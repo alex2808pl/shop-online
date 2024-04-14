@@ -22,7 +22,7 @@ class UsersRepositoryTest {
     private static Users testNewUser;
 
     @Autowired
-    private UsersRepository usersRepositoryTest;
+    private UsgitersRepository usersRepositoryTest;
 
     @BeforeAll
     static void setUp() {
