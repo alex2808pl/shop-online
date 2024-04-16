@@ -1,7 +1,8 @@
-package de.telran.shoponline.repositiry;
+package de.telran.shoponline.repository;
 
 import de.telran.shoponline.entity.Cart;
 import de.telran.shoponline.entity.Users;
+import de.telran.shoponline.repository.CartRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

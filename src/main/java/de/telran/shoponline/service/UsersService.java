@@ -4,13 +4,12 @@ import de.telran.shoponline.config.MapperUtil;
 import de.telran.shoponline.dto.UsersDto;
 import de.telran.shoponline.entity.Users;
 import de.telran.shoponline.mapper.Mappers;
-import de.telran.shoponline.repositiry.CartRepository;
-import de.telran.shoponline.repositiry.UsersRepository;
+import de.telran.shoponline.repository.CartRepository;
+import de.telran.shoponline.repository.UsersRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

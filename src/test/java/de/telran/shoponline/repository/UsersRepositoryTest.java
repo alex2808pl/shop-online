@@ -1,14 +1,13 @@
-package de.telran.shoponline.repositiry;
+package de.telran.shoponline.repository;
 
 import de.telran.shoponline.entity.Users;
 import de.telran.shoponline.entity.enums.Role;
+import de.telran.shoponline.repository.UsersRepository;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.jdbc.Sql;
 
 import java.util.Optional;
 
@@ -22,7 +21,7 @@ class UsersRepositoryTest {
     private static Users testNewUser;
 
     @Autowired
-    private UsgitersRepository usersRepositoryTest;
+    private UsersRepository usersRepositoryTest;
 
     @BeforeAll
     static void setUp() {

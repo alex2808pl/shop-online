@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderItemsRepositoryTest {
 
     private static OrderItems testOrderItems;
-    private static final int TEST_ID = 1;
+    private static final long TEST_ID = 1;
     public static final int TEST_NEW_QUANTITY = 50;
 
     @Autowired

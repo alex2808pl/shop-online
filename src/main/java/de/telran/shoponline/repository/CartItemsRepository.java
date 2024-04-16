@@ -1,4 +1,4 @@
-package de.telran.shoponline.repositiry;
+package de.telran.shoponline.repository;
 
 import de.telran.shoponline.entity.CartItems;
 import org.springframework.data.repository.CrudRepository;

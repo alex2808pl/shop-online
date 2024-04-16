@@ -1,9 +1,8 @@
-package de.telran.shoponline.repositiry;
+package de.telran.shoponline.repository;
 
-import de.telran.shoponline.entity.Categories;
 import de.telran.shoponline.entity.Products;
 import de.telran.shoponline.entity.Users;
-import de.telran.shoponline.entity.enums.Role;
+import de.telran.shoponline.repository.ProductsRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +21,14 @@ public class ProductRepositoryTest {
     public static final String TEST_NEW_NAME = "NewTestName";
     private static Users testNewUser;
 
+    private static Products testNewProduct;
+
     @Autowired
     private ProductsRepository productsRepositoryTest;
 
     @BeforeAll
     static void setUp() {
-        Products testNewProduct = new Products();
+        testNewProduct = new Products();
         testNewProduct.setName("TestName");
         testNewProduct.setDescription("Test description");
         testNewProduct.setPrice(20);

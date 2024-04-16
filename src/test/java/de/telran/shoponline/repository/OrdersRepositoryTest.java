@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ActiveProfiles(profiles = { "dev" })
 class OrdersRepositoryTest {
 
-    private static final int TEST_ID = 1;
+    private static final long TEST_ID = 1;
     public static final String TEST_NEW_DELIVERY_ADDRESS = "New Delivery Address";
     private static Orders testOrder;
 
@@ -30,7 +30,7 @@ class OrdersRepositoryTest {
         testOrder.setContactPhone("Test E-Mail");
         testOrder.setDeliveryMethod("Test Delivery Method");
         testOrder.setStatus(Status.OPEN);
-        testOrder.setUpdateAt(Timestamp.valueOf("2024-03-31 00:00:00.123456789"));
+        testOrder.setUpdatedAt(Timestamp.valueOf("2024-03-31 00:00:00.123456789"));
     }
 
     @Test
