@@ -52,8 +52,8 @@ public class Products {
     @JoinColumn(name = "CategoryID")
     private Categories category;
 
-    @OneToOne(mappedBy = "product")
-    private OrderItems orderItem;
+    @OneToMany(mappedBy = "product")
+    private Set<OrderItems> orderItem = new HashSet<>();
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<Favorites> favorites = new HashSet<>();
