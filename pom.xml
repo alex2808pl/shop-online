@@ -73,6 +73,79 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.12</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jcc-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+
+					</execution>
+					<execution>
+						<id>jacoco-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<phase>test</phase>
+						<configuration>
+							<rules>
+								<rule>
+									<!--                                    <element>BUNDLE</element>-->
+									<!--                                    <element>PACKAGE</element>-->
+									<!--                                    <element>SOURCEFILE</element>-->
+									<!--                                    <element>METHOD</element>-->
+									<element>CLASS</element>
+									<limits>
+										<limit>
+<!--											<counter>INSTRUCTION</counter>-->
+											<!--                                            <counter>LINE</counter>-->
+											<!--                                            <counter>BRANCH</counter>-->
+											<!--                                            <counter>COMPLEXITY</counter>-->
+											                                            <counter>METHOD</counter>
+											<!--                                            <counter>CLASS</counter>-->
+
+											<value>MISSEDRATIO</value>
+<!--																						<maximum>10%</maximum>-->
+											<minimum>0%</minimum>
+											<!--                                            <value>MISSEDCOUNT</value>-->
+											<!--                                            <maximum>2</maximum>-->
+											<!--                                            <value>COVEREDRATIO</value>-->
+											<!--                                            <minimum>90%</minimum>-->
+											<!--                                            <value>COVEREDCOUNT</value>-->
+											<!--                                            <minimum>90</minimum>-->
+<!--											                                            <value>TOTALCOUNT</value>-->
+<!--											                                            <minimum>20</minimum>-->
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<excludes>
+						<exclude>de/telran/shoponline/entity/**</exclude>
+						<exclude>de/telran/shoponline/**/MapperUtil.class</exclude>
+						<exclude>de/telran/shoponline/ShopOnlineApplication.class</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
