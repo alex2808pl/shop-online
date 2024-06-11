@@ -19,13 +19,16 @@ public class Mappers {
         modelMapper.typeMap(Users.class, UsersDto.class)
                 .addMappings(mapper -> mapper.skip(UsersDto::setPasswordHash));
         UsersDto usersDto = modelMapper.map(user, UsersDto.class); //автомат
-        usersDto.setCartDto(convertToCartDto(user.getCart()));
+//        usersDto.setCartDto(convertToCartDto(user.getCart()));
 //        usersDto.setPasswordHash("***");
         return usersDto;
     }
 
-    private CartDto convertToCartDto(Cart cart) {
+    public CartDto convertToCartDto(Cart cart) {
+        modelMapper.typeMap(Cart.class, CartDto.class)
+                .addMappings(mapper -> mapper.skip(CartDto::setUserDto));
         CartDto cartDto = modelMapper.map(cart, CartDto.class);
+        cartDto.setUserDto(null);
         return cartDto;
     }
 

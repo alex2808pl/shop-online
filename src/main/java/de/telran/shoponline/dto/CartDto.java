@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import de.telran.shoponline.entity.CartItems;
 import de.telran.shoponline.entity.Users;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CartDto {
     private long cartID;
 
@@ -21,7 +23,7 @@ public class CartDto {
 
 //    @OneToMany(mappedBy = "cart")
 //    private List<CartItems> cartItems;
-//
+
 //    @OneToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "UserID", referencedColumnName = "userID")
 //    private Users user;
