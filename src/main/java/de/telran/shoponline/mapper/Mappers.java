@@ -16,19 +16,27 @@ public class Mappers {
     public UsersDto convertToUsersDto(Users user) {
         if(user==null)
             return null; //new UsersDto();
-        modelMapper.typeMap(Users.class, UsersDto.class)
-                .addMappings(mapper -> mapper.skip(UsersDto::setPasswordHash));
+//        modelMapper.typeMap(Users.class, UsersDto.class)
+//                .addMappings(mapper -> mapper.skip(UsersDto::setPasswordHash));
         UsersDto usersDto = modelMapper.map(user, UsersDto.class); //автомат
-//        usersDto.setCartDto(convertToCartDto(user.getCart()));
-//        usersDto.setPasswordHash("***");
+        //Разруливаем вручную двухстороннюю связь один-к-одному
+        Cart cart = user.getCart();
+        if (cart!=null) {
+            cart.setUser(null);
+            usersDto.setCartDto(convertToCartDto(cart));
+        }
+        usersDto.setPasswordHash("***"); // замещаем пароль фиктивнім значением
         return usersDto;
     }
 
     public CartDto convertToCartDto(Cart cart) {
-        modelMapper.typeMap(Cart.class, CartDto.class)
-                .addMappings(mapper -> mapper.skip(CartDto::setUserDto));
         CartDto cartDto = modelMapper.map(cart, CartDto.class);
-        cartDto.setUserDto(null);
+        //Разруливаем вручную двухстороннюю связь один-к-одному
+        Users users = cart.getUser();
+        if(users!=null) {
+            users.setCart(null);
+            cartDto.setUserDto(convertToUsersDto(users));
+        }
         return cartDto;
     }
 

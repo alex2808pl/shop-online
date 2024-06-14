@@ -22,9 +22,7 @@ public class CartService {
     public CartDto getCartById(Long id) {
         Cart cart = cartRepository.findById(id)
                 .orElseThrow(() -> new NotFoundInDbException("Не найдена корзина с таким Id"));
-
-        CartDto cartDto = new CartDto(cart.getCartID(), null);
-//        CartDto cartDto = mappers.convertToCartDto(cart);
+        CartDto cartDto = mappers.convertToCartDto(cart);
         return cartDto;
     }
 }

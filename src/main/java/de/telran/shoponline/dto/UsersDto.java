@@ -1,5 +1,6 @@
 package de.telran.shoponline.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import de.telran.shoponline.entity.Cart;
 import de.telran.shoponline.entity.Favorites;
@@ -26,16 +27,8 @@ public class UsersDto {
     private String passwordHash;
     private Role role;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonProperty("cart")
     CartDto cartDto;
 
-
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private Set<Orders> orders = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private Set<Favorites> favorites = new HashSet<>();
-//
-//    @OneToOne(mappedBy = "user")
-//    private Cart cart;
 }

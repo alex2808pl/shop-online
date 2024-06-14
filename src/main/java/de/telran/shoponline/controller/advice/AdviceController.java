@@ -16,12 +16,12 @@ public class AdviceController {
                 .body(new ErrorMessage(exception.getMessage()));
     }
 
-    // по умолчанию для всех остальных исключений
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorMessage> handleException(Exception exception) {
-        return ResponseEntity
-                .status(HttpStatus.I_AM_A_TEAPOT)
-                .body(new ErrorMessage("Извините, что-то пошло не так, попробуйте снова!"));
-    }
+//    // по умолчанию для всех остальных исключений
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ErrorMessage> handleException(Exception exception) {
+//        return ResponseEntity
+//                .status(HttpStatus.I_AM_A_TEAPOT)
+//                .body(new ErrorMessage("Извините, что-то пошло не так, попробуйте снова!"));
+//    }
 
 }

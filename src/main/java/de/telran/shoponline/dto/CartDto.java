@@ -21,10 +21,4 @@ public class CartDto {
     @JsonProperty("user")
     UsersDto userDto;
 
-//    @OneToMany(mappedBy = "cart")
-//    private List<CartItems> cartItems;
-
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "UserID", referencedColumnName = "userID")
-//    private Users user;
 }
