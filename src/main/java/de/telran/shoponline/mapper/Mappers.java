@@ -1,8 +1,10 @@
 package de.telran.shoponline.mapper;
 
 import de.telran.shoponline.dto.CartDto;
+import de.telran.shoponline.dto.ProductsDto;
 import de.telran.shoponline.dto.UsersDto;
 import de.telran.shoponline.entity.Cart;
+import de.telran.shoponline.entity.Products;
 import de.telran.shoponline.entity.Users;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,16 @@ public class Mappers {
             cartDto.setUserDto(convertToUsersDto(users));
         }
         return cartDto;
+    }
+
+    public ProductsDto convertToProductsDto(Products products) {
+        ProductsDto productsDto = modelMapper.map(products, ProductsDto.class);
+        return productsDto;
+    }
+
+    public Products convertToProducts(ProductsDto productsDto) {
+        Products products = modelMapper.map(productsDto, Products.class);
+        return products;
     }
 
 

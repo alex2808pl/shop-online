@@ -4,6 +4,9 @@ import de.telran.shoponline.dto.UsersDto;
 import de.telran.shoponline.exceptions.ErrorParamException;
 import de.telran.shoponline.exceptions.NotFoundInDbException;
 import de.telran.shoponline.service.UsersService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.modelmapper.spi.ErrorMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UsersController {
+public class UsersController implements UsersControllerInterface{
     @Autowired
     UsersService usersService;
 
@@ -32,7 +35,7 @@ public class UsersController {
     }
 
     @PutMapping
-    public ResponseEntity<UsersDto> updateClient(@RequestBody UsersDto usersDto) throws FileNotFoundException {
+    public ResponseEntity<UsersDto> updateClient(@RequestBody @Valid UsersDto usersDto) throws FileNotFoundException {
         UsersDto client = usersService.updateUser(usersDto);
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
