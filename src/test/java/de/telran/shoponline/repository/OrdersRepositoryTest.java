@@ -29,7 +29,7 @@ class OrdersRepositoryTest {
         testOrder.setDeliveryAddress("TestAddress");
         testOrder.setContactPhone("Test E-Mail");
         testOrder.setDeliveryMethod("Test Delivery Method");
-        testOrder.setStatus(Status.OPEN);
+        testOrder.setStatus(Status.CREATED);
         testOrder.setUpdatedAt(Timestamp.valueOf("2024-03-31 00:00:00.123456789"));
     }
 

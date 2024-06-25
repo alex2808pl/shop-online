@@ -55,7 +55,7 @@ class UsersControllerTest {
                 .email("test@test.com")
                 .role(Role.CLIENT)
                 .name("Test")
-                .phoneNumber("123456789")
+                .phoneNumber("123456789012")
                 .passwordHash("******")
                 .build();
 
@@ -64,7 +64,9 @@ class UsersControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
                                 {
-                                    "userID":1
+                                    "userID":1,
+                                    "phoneNumber":"123456789012",
+                                    "name":"testName"
                                 }
                                 """))
                 .andDo(print())

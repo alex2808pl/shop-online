@@ -41,6 +41,7 @@ class UsersIntegrationTest {
          this.mockMvc.perform(get("/users")).andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$..userID").exists());
+//                 .andExpect(jsonPath("$..userID").value(1));
     }
 
     @Test
@@ -57,7 +58,7 @@ class UsersIntegrationTest {
                 .email("test@test.com")
                 .role(Role.CLIENT)
                 .name("Test")
-                .phoneNumber("123456789")
+                .phoneNumber("123456789012")
                 .passwordHash("******")
                 .build();
         String requestBody = objectMapper.writeValueAsString(expectedUser);
