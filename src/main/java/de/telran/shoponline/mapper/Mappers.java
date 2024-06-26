@@ -27,8 +27,13 @@ public class Mappers {
             cart.setUser(null);
             usersDto.setCartDto(convertToCartDto(cart));
         }
-        usersDto.setPasswordHash("***"); // замещаем пароль фиктивнім значением
+//             usersDto.setPasswordHash("***"); // замещаем пароль фиктивным значением
         return usersDto;
+    }
+
+    public Users convertToUsers(UsersDto userDto) {
+        Users users = modelMapper.map(userDto, Users.class); //автомат
+        return users;
     }
 
     public CartDto convertToCartDto(Cart cart) {

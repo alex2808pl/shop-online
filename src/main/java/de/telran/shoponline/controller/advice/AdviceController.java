@@ -1,6 +1,7 @@
 package de.telran.shoponline.controller.advice;
 
 import de.telran.shoponline.exceptions.NotFoundInDbException;
+import de.telran.shoponline.exceptions.ResponseException;
 import org.modelmapper.spi.ErrorMessage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,13 @@ public class AdviceController {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new ErrorMessage(exception.getMessage()));
+    }
+
+    @ExceptionHandler(ResponseException.class)
+    public ResponseEntity<ErrorMessage> handleException(ResponseException exception) {
+        return ResponseEntity
+                .status(HttpStatus.I_AM_A_TEAPOT)
+                .body(new ErrorMessage("Извините, что-то пошло не так, попробуйте снова!"));
     }
 
 //    // по умолчанию для всех остальных исключений
