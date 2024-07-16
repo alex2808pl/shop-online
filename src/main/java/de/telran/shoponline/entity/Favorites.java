@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 @Getter
 @Setter
+@Table(name = "favorites")
 public class Favorites {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

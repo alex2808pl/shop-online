@@ -61,18 +61,21 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authz -> authz
 //                                .requestMatchers(
-//                                        ",/**"
+//                                        "/**"
 //                                )
                                 .requestMatchers(
                                         "/auth/login", "/auth/token",
+                                        "/manage/**",
+//                                        "/users/**",
                                         "/swagger-ui.html",
                                         "/api/v1/auth/**", "/v3/api-docs/**", "/swagger-ui/**"
                                          /*",/**"*/
                                 )
                                 .permitAll()
-//                                .anyRequest().authenticated()
-                                .anyRequest().permitAll()
-                ).addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
+                                .anyRequest().authenticated()
+//                                .anyRequest().permitAll()
+                ).addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .build();
     }
 
     @Bean

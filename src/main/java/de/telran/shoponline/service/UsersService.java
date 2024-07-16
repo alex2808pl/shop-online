@@ -89,6 +89,7 @@ public class UsersService {
     }
 
     public UsersDto createUser(UsersDto userCredentialsDto) {
+        // проверить в БД существование такого же e-mail у другого пользователя
         userCredentialsDto.setUserID(null); //добавление нового пользователя
         Users users = mappers.convertToUsers(userCredentialsDto);
         //хэшируем пароль

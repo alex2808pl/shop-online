@@ -70,7 +70,7 @@ public class JwtProvider {
      */
     public String generateAccessToken(@NonNull UsersDto userDto) {
         final LocalDateTime now = LocalDateTime.now();
-        final Instant accessExpirationInstant = now.plusMinutes(15).atZone(ZoneId.systemDefault()).toInstant();
+        final Instant accessExpirationInstant = now.plusMinutes(5).atZone(ZoneId.systemDefault()).toInstant();
         final Date accessExpiration = Date.from(accessExpirationInstant);
         return Jwts.builder()
                 .setSubject(userDto.getEmail())
@@ -127,7 +127,7 @@ public class JwtProvider {
      */
     private boolean validateToken(@NonNull String token, @NonNull Key secret) {
         try {
-            Jwts.parserBuilder()
+            Jwts.parser()
                     .setSigningKey(secret)
                     .build()
                     .parseClaimsJws(token);
@@ -174,7 +174,7 @@ public class JwtProvider {
      * @return the claims extracted from the token.
      */
     private Claims getClaims(@NonNull String token, @NonNull Key secret) {
-        return Jwts.parserBuilder()
+        return Jwts.parser()
                 .setSigningKey(secret)
                 .build()
                 .parseClaimsJws(token)

@@ -69,7 +69,7 @@ public class AuthService {
         if (passwordEncoder.matches(authRequest.getPassword(), userDto.getPasswordHash())) {
             final String accessToken = jwtProvider.generateAccessToken(userDto);
             final String refreshToken = jwtProvider.generateRefreshToken(userDto);
-            refreshStorage.put(userDto.getEmail(), refreshToken);
+            refreshStorage.put(userDto.getEmail(), refreshToken); // нужно хранить в БД????
             return new JwtResponse(accessToken, refreshToken);
         } else {
             throw new AuthException("Wrong password");
@@ -140,7 +140,7 @@ public class AuthService {
             // Get the user login from the token claims
             final String login = claims.getSubject();
             // Retrieve the stored refresh token for the user
-            final String savedRefreshToken = refreshStorage.get(login);
+            final String savedRefreshToken = refreshStorage.get(login); //переделать из БД
             // Compare the stored refresh token with the provided token
             if (savedRefreshToken != null && savedRefreshToken.equals(refreshToken)) {
                 // Fetch the user data
