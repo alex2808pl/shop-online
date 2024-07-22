@@ -71,8 +71,8 @@ public class SecurityConfig {
                                          /*",/**"*/
                                 )
                                 .permitAll()
-//                                .anyRequest().authenticated()
-                                .anyRequest().permitAll()
+                                .anyRequest().authenticated()
+//                                .anyRequest().permitAll()
                 ).addFilterAfter(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
     }
 
