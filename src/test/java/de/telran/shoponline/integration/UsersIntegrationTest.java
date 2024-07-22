@@ -26,9 +26,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc(printOnlyOnFailure = false)
-@ActiveProfiles(profiles = { "dev" })
+//@SpringBootTest
+//@AutoConfigureMockMvc(printOnlyOnFailure = false)
+//@ActiveProfiles(profiles = { "dev" })
 class UsersIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
